@@ -7,7 +7,7 @@ var connectionString = builder.Configuration.GetConnectionString("JaegerDemo_DBC
 
 builder.Services.AddDbContext<JaegerDemo_DBContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<JaegerDemo_DBContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<JaegerDemo_DBContext>();
 
 
 
@@ -21,9 +21,9 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+
 }
 app.UseStaticFiles();
-
 app.UseRouting();
 
 app.UseAuthorization();
